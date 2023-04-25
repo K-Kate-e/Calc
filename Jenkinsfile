@@ -1,17 +1,7 @@
 pipeline{
 	agent any
 
-	triggers{
-		githubPush()
-	}
-
 	stages {
-		stage('Checkout'){
-			steps{
-				checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/K-Kate-e/Calc']]])
-			}
-		}
-
 		stage ('Build'){
 			steps{
 				echo 'Building...'
