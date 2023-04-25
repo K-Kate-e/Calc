@@ -22,7 +22,6 @@ pipeline{
 		stage('Test'){
 			steps{
 				echo 'Testing...'
-				sh 'docker stop $(docker ps -a -q)'
 				sh 'docker run -d -p 5555:5555 api_calc'
 				sh 'sleep 60'
 				sh 'curl 0.0.0.0:5555/calculator\\?num1=48\\&num2=75\\&operation=s'
