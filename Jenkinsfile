@@ -2,9 +2,11 @@ pipeline{
     agent{
         label 'master'
     }
+
     options {
         timestamps()
     }
+
     triggers {
         pollSCM('* * * * *')
         }
@@ -18,6 +20,7 @@ pipeline{
                 sh 'docker rm $(docker ps -qa)'
                 sh 'docker rmi $(docker images -q)'
             }
+        }
 
 		stage ('Build'){
 			steps{
@@ -36,3 +39,4 @@ pipeline{
 			}
 		}
 	}
+}
